@@ -1,0 +1,44 @@
+# Visual Studio / Xcode files
+.vs/
+.vscode/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+
+# JetBrains Rider
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+cmake-build-*/
+*.sln.iml
+
+# Builds
+Binaries/
+Build/
+DerivedDataCache/
+Intermediate/
+PackagedBuilds/
+
+# Saved (logs, autosaves, local config)
+Saved/
+
+# Cache and intermediate files
+*.VC.db
+*.opensdf
+*.sdf
+*.sln
+*.suo
+*.xcodeproj
+*.xcworkspace
+
+# Compiled source
+*.o
+*.obj
+*.exe
+*.dll
+*.dylib
+
+# OS generated files
+.DS_Store
+Thumbs.db
