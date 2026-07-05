@@ -29,6 +29,8 @@ public:
 	
 	virtual UPawnUIComponent* GetPawnUIComponent() override;
 	
+	virtual UHeroUIComponent* GetHeroUIComponent() const override;
+	
 protected:
 	// Begin APawn Interface
 	virtual void PossessedBy(AController* NewController) override;
