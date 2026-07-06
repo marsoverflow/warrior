@@ -19,7 +19,7 @@ public:
 	AWarriorHeroController();
 	
 	// Begin IGenericTeamAgentInterface interface
-	virtual FGenericTeamId GetGenericTeamId() const;
+	virtual FGenericTeamId GetGenericTeamId() const override;
 	// End IGenericTeamAgentInterface interface
 	
 protected:
