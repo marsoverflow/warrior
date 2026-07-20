@@ -11,7 +11,7 @@ void UDataAsset_EnemyStartUpData::GiveToAbilitySystemComponent(UWarriorAbilitySy
 {
 	Super::GiveToAbilitySystemComponent(InASCToGive, ApplyLevel);
 	
-	if (!EnemyCombatAbilities.IsEmpty()) { return; }
+	if (EnemyCombatAbilities.IsEmpty()) { return; }
 	
 	for (TSubclassOf<UWarriorEnemyGameplayAbility>& AbilityClass : EnemyCombatAbilities)
 	{
