@@ -39,6 +39,9 @@ class WARRIOR_API UBTTask_RotateToFaceTarget : public UBTTaskNode
 	
 	virtual FString GetStaticDescription() const override;
 	
+	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
+	virtual void TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds) override;
+	
 	UPROPERTY(EditAnywhere, Category = "Face Target")
 	float AnglePrecision;
 	
@@ -47,4 +50,6 @@ class WARRIOR_API UBTTask_RotateToFaceTarget : public UBTTaskNode
 	
 	UPROPERTY(EditAnywhere, Category = "Face Target")
 	FBlackboardKeySelector InTargetToFaceKey;
+	
+	bool HasReachedAnglePrecision(APawn* QueryPawn, AActor* TargetActor) const;
 };
