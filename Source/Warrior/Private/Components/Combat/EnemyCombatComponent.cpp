@@ -16,7 +16,6 @@ void UEnemyCombatComponent::OnHitTargetActor(AActor* HitActor)
 	
 	OverlappedActors.Add(HitActor);
 	
-	// TODO: Implement block check
 	bool bIsValidBlock = false;
 	
 	const bool bIsPlayerBlocking = UWarriorFunctionLibrary::NativeDoesActorHaveTag(HitActor, WarriorGameplayTags::Player_Status_Blocking);
@@ -31,16 +30,9 @@ void UEnemyCombatComponent::OnHitTargetActor(AActor* HitActor)
 	EventData.Instigator = GetOwningPawn();
 	EventData.Target = HitActor;
 	
-	if (bIsValidBlock)
-	{
-		// TODO: Handle success block	
-	}
-	else
-	{
-		UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(
-			GetOwningPawn(), 
-			WarriorGameplayTags::Shared_Event_Melee_Hit, 
-			EventData
-		);
-	}
+	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(
+		bIsValidBlock ? HitActor : GetOwningPawn(), 
+		bIsValidBlock ? WarriorGameplayTags::Player_Event_SuccessfulBlock : WarriorGameplayTags::Shared_Event_Melee_Hit, 
+		EventData
+	);
 }
