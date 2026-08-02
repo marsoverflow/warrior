@@ -10,6 +10,7 @@
 
 class UPawnCombatComponent;
 class UWarriorAbilitySystemComponent;
+struct FScalableFloat;
 
 /**
  * 
@@ -42,6 +43,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Warrior|FunctionLibrary", meta=(DisplayName = "GetPawnCombatComponentFromActor", ExpandEnumAsExecs = "OutValidType"))
 	static UPawnCombatComponent* BP_GetPawnCombatComponentFromActor(AActor* InActor, EWarriorValidType& OutValidType);
 	
-	UFUNCTION(BlueprintCallable, Category = "Warrior|FunctionLibrary")
+	UFUNCTION(BlueprintPure, Category = "Warrior|FunctionLibrary")
 	static bool IsTargetPawnHostile(APawn* QueryPawn, APawn* TargetPawn);
+	
+	UFUNCTION(BlueprintPure, Category = "Warrior|FunctionLibrary", meta=(CompactNodeTitle="Get Value at Level"))
+	static float GetScalableFloatValueAtLevel(const FScalableFloat& InScalableFloat, float InLevel = 1.f);
+	
 };
