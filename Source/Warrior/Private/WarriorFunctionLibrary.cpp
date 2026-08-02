@@ -10,6 +10,8 @@
 #include "Interfaces/PawnCombatInterface.h"
 #include "Kismet/KismetMathLibrary.h"
 
+#include "WarriorDebugHelper.h"
+
 UWarriorAbilitySystemComponent* UWarriorFunctionLibrary::NativeGetWarriorASCFromActor(AActor* InActor)
 {
 	check(InActor);
@@ -127,6 +129,16 @@ FGameplayTag UWarriorFunctionLibrary::ComputeHitReactDirectionTag(AActor* InAtta
 	{
 		return WarriorGameplayTags::Shared_Status_HitReact_Front;
 	}
+}
+
+bool UWarriorFunctionLibrary::IsValidBlock(AActor* InAttacker, AActor* InDefender)
+{
+	check(InAttacker && InDefender);
 	
-	return FGameplayTag();
+	float DotResult = FVector::DotProduct(InAttacker->GetActorForwardVector(), InDefender->GetActorForwardVector());
+	
+	const FString DebugMessage = FString::Printf(TEXT("Dot result: %f %s"), DotResult, DotResult < -0.1f ? TEXT("Valid Block") : TEXT("Invalid block"));
+	Debug::Print(DebugMessage, DotResult < -0.1f ? FColor::Green : FColor::Red);
+	
+	return DotResult < -0.1f;
 }

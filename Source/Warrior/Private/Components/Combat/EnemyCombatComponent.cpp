@@ -4,9 +4,11 @@
 #include "Components/Combat/EnemyCombatComponent.h"
 
 #include "AbilitySystemBlueprintLibrary.h"
-#include "WarriorDebugHelper.h"
+#include "WarriorFunctionLibrary.h"
 #include "WarriorGameplayTags.h"
 #include "Abilities/GameplayAbilityTypes.h"
+
+#include "WarriorDebugHelper.h"
 
 void UEnemyCombatComponent::OnHitTargetActor(AActor* HitActor)
 {
@@ -17,12 +19,12 @@ void UEnemyCombatComponent::OnHitTargetActor(AActor* HitActor)
 	// TODO: Implement block check
 	bool bIsValidBlock = false;
 	
-	const bool bIsPlayerBlocking = false;
+	const bool bIsPlayerBlocking = UWarriorFunctionLibrary::NativeDoesActorHaveTag(HitActor, WarriorGameplayTags::Player_Status_Blocking);
 	const bool bIsMyAttackUnblockable = false;
 	
 	if (bIsPlayerBlocking && !bIsMyAttackUnblockable)
 	{
-		// TODO: Check if the block is valid
+		bIsValidBlock = UWarriorFunctionLibrary::IsValidBlock(GetOwningPawn(), HitActor);
 	}
 	
 	FGameplayEventData EventData;
