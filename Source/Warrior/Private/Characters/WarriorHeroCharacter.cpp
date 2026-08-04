@@ -159,6 +159,4 @@ void AWarriorHeroCharacter::Input_SwitchTargetCompleted(const FInputActionValue&
 		SwitchDirection.X > 0.f ? WarriorGameplayTags::Player_Event_SwitchTarget_Right : WarriorGameplayTags::Player_Event_SwitchTarget_Left,
 		Data
 	);
-	
-	Debug::Print(TEXT("SwitchDirection: ") + SwitchDirection.ToString());
 }
