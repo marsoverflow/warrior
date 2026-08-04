@@ -70,6 +70,9 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category="TargetLock")
 	UInputMappingContext* TargetLockMappingContext;
 	
+	UPROPERTY(EditDefaultsOnly, Category="TargetLock")
+	float TargetLockCameraOffsetDistance{ 20.f };
+	
 	UPROPERTY()
 	UWarriorWidgetBase* DrawnTargetLockWidget;
 	
