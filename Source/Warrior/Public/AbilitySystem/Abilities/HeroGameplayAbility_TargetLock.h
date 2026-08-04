@@ -50,6 +50,9 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category="TargetLock")
 	TSubclassOf<UWarriorWidgetBase> TargetLockWidgetClass;
 	
+	UPROPERTY(EditDefaultsOnly, Category="TargetLock")
+	float TargetLockRotationInterpSpeed{ 5.f };
+	
 	UPROPERTY()
 	UWarriorWidgetBase* DrawnTargetLockWidget;
 	
