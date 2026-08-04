@@ -6,6 +6,7 @@
 #include "AbilitySystem/Abilities/WarriorHeroGameplayAbility.h"
 #include "HeroGameplayAbility_TargetLock.generated.h"
 
+class UInputMappingContext;
 class UWarriorWidgetBase;
 /**
  * 
@@ -31,11 +32,15 @@ private:
 	AActor* GetNearestTargetFromAvailableActors(const TArray<AActor*>& InAvailableActors);
 	void DrawTargetLockWidget();
 	void SetTargetLockWidgetPosition();
+	
 	void InitTargetLockMovement();
+	void InitTargetLockMappingContext();
 	
 	void CancelTargetLockAbility();
 	void CleanUp();
+	
 	void ResetTargetLockMovement();
+	void ResetTargetLockMappingContext();
 	
 	UPROPERTY(EditDefaultsOnly, Category="TargetLock")
 	float BoxTraceDistance{ 5000.f };
@@ -57,6 +62,9 @@ private:
 	
 	UPROPERTY(EditDefaultsOnly, Category="TargetLock")
 	float TargetLockMaxWalkSpeed{ 150.f };
+	
+	UPROPERTY(EditDefaultsOnly, Category="TargetLock")
+	UInputMappingContext* TargetLockMappingContext;
 	
 	UPROPERTY()
 	UWarriorWidgetBase* DrawnTargetLockWidget;
