@@ -71,6 +71,8 @@ private:
 	void Input_SwitchTargetTriggered(const FInputActionValue& InputActionValue);
 	void Input_SwitchTargetCompleted(const FInputActionValue& InputActionValue);
 	
+	FVector2D SwitchDirection{ FVector2D::ZeroVector };
+	
 #pragma endregion
 	
 public:
