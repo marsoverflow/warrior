@@ -8,8 +8,6 @@
 #include "WarriorGameplayTags.h"
 #include "Abilities/GameplayAbilityTypes.h"
 
-#include "WarriorDebugHelper.h"
-
 void UEnemyCombatComponent::OnHitTargetActor(AActor* HitActor)
 {
 	if (OverlappedActors.Contains(HitActor)) return;
@@ -19,7 +17,7 @@ void UEnemyCombatComponent::OnHitTargetActor(AActor* HitActor)
 	bool bIsValidBlock = false;
 	
 	const bool bIsPlayerBlocking = UWarriorFunctionLibrary::NativeDoesActorHaveTag(HitActor, WarriorGameplayTags::Player_Status_Blocking);
-	const bool bIsMyAttackUnblockable = false;
+	const bool bIsMyAttackUnblockable = UWarriorFunctionLibrary::NativeDoesActorHaveTag(GetOwningPawn(), WarriorGameplayTags::Enemy_Status_Unblockable);
 	
 	if (bIsPlayerBlocking && !bIsMyAttackUnblockable)
 	{
